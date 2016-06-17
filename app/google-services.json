@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "257494007976",
+    "project_id": "socialloginexample-1345"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257494007976:android:f82883cf6ae8cc8c",
+        "android_client_info": {
+          "package_name": "com.example.twilightuser.socialloginexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257494007976-eu813b863vq8vit9vgkfa3sqd0ne3bb0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.twilightuser.socialloginexample",
+            "certificate_hash": "1A3CB39AA96588E49742525F054B7E0A9A1C831A"
+          }
+        },
+        {
+          "client_id": "257494007976-aj3sqr5pid2cff2qpga6k98gmk4t20h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABqMAtBBng0SPzoPH36XBKS5OfgteMi2k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

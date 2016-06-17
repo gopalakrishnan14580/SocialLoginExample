@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SocialLoginExample</string>
+    <string name="facebook_app_id">262525967436450</string>
+    <string name="twitter">Twitter Login</string>
+    <string name="facebook">Facebook Login</string>
+    <string name="google_plus">Google Plus Login</string>
+</resources>
