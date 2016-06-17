@@ -25,6 +25,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.linkedin.platform.APIHelper;
+import com.linkedin.platform.LISessionManager;
+import com.linkedin.platform.errors.LIApiError;
+import com.linkedin.platform.errors.LIAuthError;
+import com.linkedin.platform.listeners.ApiListener;
+import com.linkedin.platform.listeners.ApiResponse;
+import com.linkedin.platform.listeners.AuthListener;
+import com.linkedin.platform.utils.Scope;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -46,7 +54,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     LoginButton login_facebook_button;
     CallbackManager callbackManager;
-    Button fb,google_Login;
+    Button fb,google_Login,linkedin;
 
     /*Google plus*/
 
@@ -66,7 +74,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private TwitterLoginButton loginButton;
 
-
+    //Linkedin
+    private static final String host = "api.linkedin.com";
+    private static final String url = "https://" + host+ "/v1/people/~:(id,email-address,formatted-name,phone-numbers,picture-urls::(original))";
 
 
     @Override
@@ -108,6 +118,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         //Twitter end
 
         google_Login = (Button)findViewById(R.id.google_pluse);
+        linkedin=(Button) findViewById(R.id.linkedin);
 
         //Initializing google signin option
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -225,6 +236,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         //Twitter
         loginButton.onActivityResult(requestCode, responseCode, data);
 
+        //Linkedin
+        LISessionManager.getInstance(getApplicationContext()).onActivityResult(this, requestCode, responseCode, data);
+
+        linkededinApiHelper();
+
     }
 
 
@@ -242,8 +258,76 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         {
             loginButton.setOnClickListener(this);
         }
+        if (v == linkedin)
+        {
+            linkden();
+        }
+
     }
 
+
+    private void linkden()
+    {
+
+        LISessionManager.getInstance(getApplicationContext())
+                .init(this, buildScope(), new AuthListener() {
+                    @Override
+                    public void onAuthSuccess() {
+
+                        Toast.makeText(getApplicationContext(), "success" +
+                                        LISessionManager
+                                                .getInstance(getApplicationContext())
+                                                .getSession().getAccessToken().toString(),
+                                Toast.LENGTH_LONG).show();
+
+
+
+
+                    }
+
+                    @Override
+                    public void onAuthError(LIAuthError error) {
+
+                        Toast.makeText(getApplicationContext(), "failed "
+                                        + error.toString(),
+                                Toast.LENGTH_LONG).show();
+                        System.out.println("Exception : " + error.toString());
+                    }
+                }, true);
+    }
+
+    private static Scope buildScope() {
+        return Scope.build(Scope.R_BASICPROFILE, Scope.R_EMAILADDRESS);
+    }
+
+    public void linkededinApiHelper() {
+        APIHelper apiHelper = APIHelper.getInstance(getApplicationContext());
+        apiHelper.getRequest(MainActivity.this, url, new ApiListener() {
+            @Override
+            public void onApiSuccess(ApiResponse result) {
+                try {
+
+                    JSONObject response=result.getResponseDataAsJson();
+
+                    System.out.println("Linkedin Response :" +response);
+
+                    //response.getString("id");
+                    System.out.println("Linkedin ID ------------------->"+response.getString("id"));
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Home page Exception :" + e.getMessage());
+                }
+            }
+
+            @Override
+            public void onApiError(LIApiError error) {
+
+            }
+        });
+    }
     /*Google plus*/
 
     //This function will option signing intent

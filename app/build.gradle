@@ -54,8 +54,12 @@ dependencies {
     compile 'com.google.android.gms:play-services:9.0.2'
     compile 'com.google.android.gms:play-services-auth:9.0.2'
 
+    //Android Twitter SDK
     compile('com.twitter.sdk.android:twitter:1.13.3@aar') {
         transitive = true;
     }
+
+    //Android Linkedin SDK
+    compile project(':linkedin-sdk')
 
 }
