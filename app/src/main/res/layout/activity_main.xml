@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.example.twilightuser.socialloginexample.MainActivity">
 
     <!--Facebook login -->
@@ -60,6 +61,17 @@
         android:onClick="onClick"
         android:text="@string/twitter"
         android:textStyle="bold"/>
+
+
+    <Button
+        android:layout_below="@+id/linkedtext"
+        android:id="@+id/linkedin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="@string/linkedin"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"/>
 
 
 </LinearLayout>

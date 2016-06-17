@@ -4,4 +4,5 @@
     <string name="twitter">Twitter Login</string>
     <string name="facebook">Facebook Login</string>
     <string name="google_plus">Google Plus Login</string>
+    <string name="linkedin">Linkedin Login</string>
 </resources>
