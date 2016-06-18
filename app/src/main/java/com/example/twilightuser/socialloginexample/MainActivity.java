@@ -70,7 +70,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     //Signin constant to check the activity result
     private int RC_SIGN_IN = 100;
 
-     String TWITTER_KEY="QIhrlYhWgrSFqcsfuAFa7KQmK",TWITTER_SECRET="lPjGpKNRtIr9w8Lp8PLd8JzH8O63PKSrduKijNHlbi0mmyV8nc";
+
+    private static final String TWITTER_KEY = "QIhrlYhWgrSFqcsfuAFa7KQmK";
+    private static final String TWITTER_SECRET = "lPjGpKNRtIr9w8Lp8PLd8JzH8O63PKSrduKijNHlbi0mmyV8nc";
 
     private TwitterLoginButton loginButton;
 
