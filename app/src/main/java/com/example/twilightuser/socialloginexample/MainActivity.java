@@ -282,9 +282,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                                                 .getSession().getAccessToken().toString(),
                                 Toast.LENGTH_LONG).show();
 
-
-
-
                     }
 
                     @Override
