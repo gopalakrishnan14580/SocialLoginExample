@@ -124,6 +124,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                                 User user = userResult.data;
 
+                                System.out.println("screenName : "+user.screenName);
+                                System.out.println("name : "+user.name);
+                                System.out.println("location : "+user.location);
+                                System.out.println("timeZone : "+user.timeZone);
+                                System.out.println("description : "+user.description);
+                                System.out.println("id : "+user.id);
+                                System.out.println("Email : "+user.email);
+
+
+
                                 twitterImage = user.profileImageUrl;
                                 screenname = user.screenName;
                                 username = user.name;
