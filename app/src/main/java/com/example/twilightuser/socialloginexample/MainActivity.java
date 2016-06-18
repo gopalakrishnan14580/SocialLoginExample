@@ -54,7 +54,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     LoginButton login_facebook_button;
     CallbackManager callbackManager;
-    Button fb,google_Login,linkedin;
+    Button fb,google_Login,linkedin,customTwitter;
 
     /*Google plus*/
 
@@ -97,7 +97,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.activity_main);
 
         //Twitter start
-
+        customTwitter=(Button) findViewById(R.id.customTwitter);
         loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
@@ -303,9 +303,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             signInButton.setOnClickListener(this);
             signIn();
         }
-        if (v == loginButton)
+        if (v == customTwitter)
         {
-            loginButton.setOnClickListener(this);
+            loginButton.performClick();
         }
         if (v == linkedin)
         {
