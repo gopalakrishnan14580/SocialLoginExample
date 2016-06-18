@@ -75,6 +75,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private static final String TWITTER_SECRET = "lPjGpKNRtIr9w8Lp8PLd8JzH8O63PKSrduKijNHlbi0mmyV8nc";
 
     private TwitterLoginButton loginButton;
+    //TwitterSession session;
 
     //Linkedin
     private static final String host = "api.linkedin.com";
@@ -110,6 +111,42 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                 String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+
+
+//------------------------------------------------------------------------
+                /*session = Twitter.getSessionManager().getActiveSession();
+
+                Twitter.getApiClient(session).getAccountService()
+                        .verifyCredentials(true, false, new Callback<User>() {
+
+                            @Override
+                            public void success(Result<User> userResult) {
+
+                                User user = userResult.data;
+
+                                twitterImage = user.profileImageUrl;
+                                screenname = user.screenName;
+                                username = user.name;
+                                location = user.location;
+                                timeZone = user.timeZone;
+                                description = user.description;
+
+
+                                *//*user_picture = (ImageView) findViewById(R.id.profile_pic);
+                                Picasso.with(getApplicationContext()).load(twitterImage.toString())
+                                        .into(user_picture);
+                                *//*
+
+                            }
+
+                            @Override
+                            public void failure(TwitterException e) {
+                            }
+
+                        });
+*/
+
+
             }
             @Override
             public void failure(TwitterException exception) {
